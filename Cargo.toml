@@ -1,0 +1,19 @@
+[package]
+name = "inline-option"
+version = "0.1.0"
+edition = "2024"
+
+[features]
+serde = ["dep:serde"]
+nullable-core-floats = []
+nullable-core-ints = []
+
+[dependencies]
+serde = { version = "1", features = ["derive"], optional = true }
+
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "bench"
+harness = false
