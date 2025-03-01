@@ -17,7 +17,7 @@ fn bench_iter_mut<T: Nullable + Clone + Default>(c: &mut Criterion) {
     let mut group = c.benchmark_group("vec_iter_mut");
     group.throughput(criterion::Throughput::Elements(10000));
     let mut vec = vec![None::<T>; 10000];
-    group.bench_function("Option<T>", |b| {
+    group.bench_function("STD Option", |b| {
         b.iter(|| {
             for x in vec.iter_mut() {
                 x.replace(T::default());
@@ -25,8 +25,8 @@ fn bench_iter_mut<T: Nullable + Clone + Default>(c: &mut Criterion) {
         })
     });
 
-    let mut vec = vec![IOption::<T>::default(); 10000];
-    group.bench_function("IOption<T>", |b| {
+    let mut vec = vec![IOption::<T>::none(); 10000];
+    group.bench_function("Inline Option", |b| {
         b.iter(|| {
             for x in vec.iter_mut() {
                 x.replace(T::default());

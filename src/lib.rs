@@ -198,6 +198,11 @@ impl<T: Nullable> IOption<T> {
     }
 
     #[inline]
+    pub const fn none() -> Self {
+        Self(T::NULL)
+    }
+
+    #[inline]
     pub fn is_none(&self) -> bool {
         self.0.is_null()
     }
