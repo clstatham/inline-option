@@ -1,7 +1,8 @@
 [package]
 name = "inline-option"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
+repository = "https://github.com/clstatham/inline-option"
 authors = ["Connor Statham"]
 license = "MIT OR Apache-2.0"
 description = "A memory-efficient alternative to Option that uses a pre-defined value to represent None."
