@@ -6,10 +6,10 @@ use inline_option::{IOption, Nullable};
 struct TestU32(u32);
 
 impl Nullable for TestU32 {
-    const NULL: Self = TestU32(0);
+    const NULL: Self = TestU32(u32::MAX);
 
     fn is_null(&self) -> bool {
-        self.0 == 0
+        self.0 == u32::MAX
     }
 }
 
