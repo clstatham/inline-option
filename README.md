@@ -53,7 +53,7 @@ Based on the simple benchmark in [benches/bench.rs](benches/bench.rs), `Vec<IOpt
 ## Cargo Features
 
 - `serde`: Enables Serde 1 support for `IOption`.
-- `nullable-core-floats`: Implements `Nullable` for `f32` and `f64`, using `NAN` as the null value.
+- `nullable-core-floats`: Implements `Nullable` for `f32` and `f64`, using their maximum values as their null values.
 - `nullable-core-ints`: Implements `Nullable` for `i8` through `i128`, `u8` through `u128`, `isize`, and `usize` using their maximum values as their null values.
 
 ## License
