@@ -6,6 +6,44 @@ In certain performance-intensive applications, the standard library's `Option` e
 
 `IOption` is a thin wrapper around a nullable value that provides a similar API to `Option`, but without the extra space overhead. It is a zero-cost abstraction that is as efficient as working with the nullable value directly.
 
+## Example
+
+```rust
+use inline_option::{IOption, Nullable};
+
+// Define a struct that can be null.
+#[derive(Clone, Copy, Debug, PartialEq)]
+struct Value(i32);
+
+// Implement the Nullable trait for the struct.
+impl Nullable for Value {
+    const NULL: Self = Value(i32::MAX);
+
+    fn is_null(&self) -> bool {
+        self.0 == i32::MAX
+    }
+}
+
+fn main() {
+    // Create an inline option that can hold a Value.
+    let mut opt = IOption::<Value>::none();
+    assert!(opt.is_none());
+
+    // Replace the value in the inline option.
+    opt.replace(Value(42));
+    assert!(opt.is_some());
+
+    // Get the value from the inline option.
+    let value = opt.unwrap();
+    assert_eq!(value.0, 42);
+
+    // Or, convert it to a standard option.
+    let std_opt = opt.as_ref();
+    assert_eq!(std_opt, Some(&Value(42)));
+}
+
+```
+
 ## Benchmarks
 
 Based on the simple benchmark in [benches/bench.rs](benches/bench.rs), `Vec<IOption<T>>` can be iterated over 3 times as fast as `Vec<Option<T>>`:
