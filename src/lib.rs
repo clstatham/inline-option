@@ -38,7 +38,7 @@ impl<T> Nullable for *mut T {
 
 #[cfg(feature = "nullable-core-floats")]
 impl Nullable for f32 {
-    const NULL: Self = core::f32::NAN;
+    const NULL: Self = f32::MAX;
 
     #[inline]
     fn is_null(&self) -> bool {
@@ -48,7 +48,7 @@ impl Nullable for f32 {
 
 #[cfg(feature = "nullable-core-floats")]
 impl Nullable for f64 {
-    const NULL: Self = core::f64::NAN;
+    const NULL: Self = f64::MAX;
 
     #[inline]
     fn is_null(&self) -> bool {
