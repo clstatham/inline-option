@@ -42,7 +42,7 @@ impl Nullable for f32 {
 
     #[inline]
     fn is_null(&self) -> bool {
-        self.is_nan()
+        *self == f32::MAX
     }
 }
 
@@ -52,7 +52,7 @@ impl Nullable for f64 {
 
     #[inline]
     fn is_null(&self) -> bool {
-        self.is_nan()
+        *self == f64::MAX
     }
 }
 
